@@ -1,5 +1,4 @@
 import "./App.css";
-
 import React, { useState, useEffect } from "react";
 
 const convertTimeToString = (time) => {
@@ -12,6 +11,13 @@ const convertTimeToString = (time) => {
 };
 
 const stopTimer = (timer) => timer.pauseTime - timer.startTime;
+const hideButton = (...selectors) => {
+  selectors.map((element) => (element.style.display = "none"));
+};
+
+const showButton = (...selectors) => {
+  selectors.map((element) => (element.style.display = "inline-block"));
+};
 
 function App() {
   const [isRunning, setIsRunning] = useState(false);
@@ -30,15 +36,27 @@ function App() {
 
   const start = () => {
     setIsRunning(true);
-    setTimer({ ...timer, startTime: Date.now() });
+    if (isPaused) {
+      setTimer({ ...timer, startTime: Date.now() - timer.totalTime });
+      setIsPaused(false);
+    } else {
+      setTimer({ ...timer, startTime: Date.now() });
+    }
   };
 
   const stop = () => {
     setIsRunning(false);
     setIsPaused(true);
-    setTimer((timer) => {
-      return { ...timer, pauseTime: Date.now() };
-    });
+    setTimer({ ...timer, pauseTime: Date.now() });
+  };
+
+  const reset = () => {
+    setIsPaused(false);
+    setTimer({ ...timer, startTime: 0, totalTime: 0, pauseTime: 0 });
+  };
+
+  const lap = () => {
+    return;
   };
 
   useEffect(() => {
@@ -51,6 +69,12 @@ function App() {
         clearInterval(timerID);
       };
     }
+    if (isPaused) {
+      const resumeTimer = setInterval(() =>
+        setTimer({ ...timer, startTime: timer.startTime + timer.totalTime })
+      );
+      return () => clearInterval(resumeTimer);
+    }
   }, [isRunning, timer.totalTime]);
 
   return (
@@ -60,12 +84,26 @@ function App() {
           <p>{convertTimeToString(timer.totalTime)}</p>
         </div>
         <div className="buttons">
-          <button className="start" onClick={start}>
-            Start
-          </button>
-          <button className="stop" onClick={stop}>
-            Stop
-          </button>
+          {/* <button className="lap">Lap</button>
+          <button className="reset">Reset</button> */}
+          {isPaused ? (
+            <button className="reset" onClick={reset}>
+              Reset
+            </button>
+          ) : (
+            <button className="lap" onClick={lap}>
+              Lap
+            </button>
+          )}
+          {!isRunning ? (
+            <button className="start" onClick={start}>
+              Start
+            </button>
+          ) : (
+            <button className="stop" onClick={stop}>
+              Stop
+            </button>
+          )}
         </div>
       </div>
       <div className="bottom">

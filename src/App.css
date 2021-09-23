@@ -20,7 +20,7 @@ body {
   font-size: 10px;
 }
 
-/* @font-face {
+@font-face {
   font-family: "SF-Pro";
   src: url(./assets/fonts/SF-Pro-Display-Ultralight.otf);
 }
@@ -28,7 +28,7 @@ body {
 @font-face {
   font-family: "SF-Pro-Regular";
   src: url(./assets/fonts/SF-Pro-Text-Regular.otf);
-} */
+}
 
 .App {
   width: 375px;
@@ -39,4 +39,61 @@ body {
   text-align: center;
   background-color: var(--primary-dark-color);
   font-variant-numeric: tabular-nums;
+}
+
+button.start {
+  width: 60px;
+  height: 60px;
+  margin: 50px 0 10px 100px;
+  border-radius: 50%;
+  background-clip: padding-box;
+  color: var(--start-text-color);
+  border: 4px double var(--start-button-color);
+  background-color: var(--start-button-color);
+}
+
+button.stop {
+  /* display: none; */
+  width: 60px;
+  height: 60px;
+  margin: 50px 0 10px 100px;
+  border-radius: 50%;
+  background-clip: padding-box;
+  color: var(--stop-text-color);
+  border: 4px double var(--stop-button-color);
+  background-color: var(--stop-button-color);
+}
+
+button.lap {
+  width: 60px;
+  height: 60px;
+  margin: 50px 100px 10px 0;
+  border-radius: 50%;
+  background-clip: padding-box;
+  color: var(--lap-inactive-text-color);
+  border: 4px double var(--lap-inactive-button-color);
+  background-color: var(--lap-inactive-button-color);
+}
+
+button.reset {
+  /* display: none; */
+  width: 60px;
+  height: 60px;
+  margin: 50px 100px 10px 0;
+  border-radius: 50%;
+  background-clip: padding-box;
+  color: var(--lap-active-text-color);
+  border: 4px double var(--lap-active-button-color);
+  background-color: var(--lap-active-button-color);
+}
+div.digits > p {
+  padding: 150px 0 0 0;
+  margin-bottom: 25px;
+  font-family: "SF-Pro";
+}
+
+div.bottom {
+  width: 375px;
+  height: 266px;
+  overflow: auto;
 }
