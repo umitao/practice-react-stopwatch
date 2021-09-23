@@ -1,38 +1,41 @@
+:root {
+  --primary-dark-color: rgb(0, 0, 0);
+  --stop-text-color: rgb(255, 71, 64);
+  --stop-button-color: rgb(52, 13, 14);
+  --stop-clicked-color: rgb(28, 7, 6);
+  --start-text-color: rgb(103, 203, 103);
+  --start-button-color: rgb(19, 41, 20);
+  --start-clicked-color: rgb(5, 23, 10);
+  --lap-inactive-text-color: rgb(152, 152, 159);
+  --lap-inactive-button-color: rgb(28, 28, 30);
+  --lap-active-text-color: rgb(255, 255, 255);
+  --lap-active-button-color: rgb(51, 51, 51);
+  --lap-clicked-button-color: rgb(27, 27, 27);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+/* @font-face {
+  font-family: "SF-Pro";
+  src: url(./assets/fonts/SF-Pro-Display-Ultralight.otf);
+}
+
+@font-face {
+  font-family: "SF-Pro-Regular";
+  src: url(./assets/fonts/SF-Pro-Text-Regular.otf);
+} */
+
 .App {
+  width: 375px;
+  height: 667px;
+  margin: 0 auto;
+  font-size: 8em;
+  color: var(--lap-active-text-color);
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background-color: var(--primary-dark-color);
 }
