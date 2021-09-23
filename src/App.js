@@ -45,7 +45,7 @@ function App() {
     if (isRunning) {
       const timerID = setInterval(() => {
         setTimer({ ...timer, totalTime: timeElapsed(timer.startTime) });
-      }, 100);
+      }, 10);
 
       return () => {
         clearInterval(timerID);
@@ -57,7 +57,7 @@ function App() {
     <div className="App">
       <div className="top">
         <div className="digits">
-          <p>{convertTimeToString(timeElapsed(timer.startTime))}</p>
+          <p>{convertTimeToString(timer.totalTime)}</p>
         </div>
         <div className="buttons">
           <button className="start" onClick={start}>

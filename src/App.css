@@ -38,4 +38,5 @@ body {
   color: var(--lap-active-text-color);
   text-align: center;
   background-color: var(--primary-dark-color);
+  font-variant-numeric: tabular-nums;
 }
