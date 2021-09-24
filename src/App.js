@@ -10,15 +10,6 @@ const convertTimeToString = (time) => {
   return `${padNumber(minutes)}:${padNumber(seconds)}.${padNumber(hundredths)}`;
 };
 
-const stopTimer = (timer) => timer.pauseTime - timer.startTime;
-const hideButton = (...selectors) => {
-  selectors.map((element) => (element.style.display = "none"));
-};
-
-const showButton = (...selectors) => {
-  selectors.map((element) => (element.style.display = "inline-block"));
-};
-
 function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -30,14 +21,15 @@ function App() {
     lapTimes: [],
   });
 
-  const timeElapsed = (startTime) => {
-    return Date.now() - startTime;
+  const timeElapsed = (time) => {
+    return Date.now() - time;
   };
 
   const start = () => {
     setIsRunning(true);
     if (isPaused) {
       setTimer({ ...timer, startTime: Date.now() - timer.totalTime });
+      // setTimer({ ...timer, startTime: Date.now() + timer.totalTime });
       setIsPaused(false);
     } else {
       setTimer({ ...timer, startTime: Date.now() });
@@ -47,7 +39,11 @@ function App() {
   const stop = () => {
     setIsRunning(false);
     setIsPaused(true);
-    setTimer({ ...timer, pauseTime: Date.now() });
+    setTimer({
+      ...timer,
+      pauseTime: Date.now(),
+      // totalTime: Date.now() - timer.startTime,
+    });
   };
 
   const reset = () => {
@@ -55,7 +51,14 @@ function App() {
     setTimer({ ...timer, startTime: 0, totalTime: 0, pauseTime: 0 });
   };
 
+  // this.setState({
+  //   arrayvar: [...this.state.arrayvar, newelement]
+  // })
+
   const lap = () => {
+    const tempLap = timer.totalTime;
+    console.log(tempLap);
+    //setTimer({ ...timer, lapTimes: [...lapTimes, tempLap] });
     return;
   };
 
@@ -84,8 +87,6 @@ function App() {
           <p>{convertTimeToString(timer.totalTime)}</p>
         </div>
         <div className="buttons">
-          {/* <button className="lap">Lap</button>
-          <button className="reset">Reset</button> */}
           {isPaused ? (
             <button className="reset" onClick={reset}>
               Reset

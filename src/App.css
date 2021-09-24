@@ -97,3 +97,45 @@ div.bottom {
   height: 266px;
   overflow: auto;
 }
+
+table {
+  width: 360px;
+  font-family: "SF-Pro-Regular";
+  font-size: 1.3em;
+  font-variant-numeric: tabular-nums;
+  border-collapse: collapse;
+}
+
+tbody {
+  margin: 0 auto;
+  display: table;
+  width: 90%;
+  padding-top: 10px;
+  /* border: 2px solid #fff; */
+}
+
+tr {
+  border-bottom: 1px solid var(--lap-active-button-color);
+}
+
+td:first-child {
+  text-align: left;
+}
+
+td:last-child {
+  text-align: right;
+}
+
+td,
+th {
+  height: 20px;
+  padding: 10px 10px;
+}
+
+.min {
+  color: var(--start-text-color);
+}
+
+.max {
+  color: var(--stop-text-color);
+}
